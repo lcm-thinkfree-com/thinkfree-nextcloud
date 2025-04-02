@@ -21,12 +21,12 @@ class EditorController extends Controller {
         $this->l10n = $l10n;
     }
 
-    #[NoCSRFRequired]
+	#[NoCSRFRequired]
+	#[NoAdminRequired]
     public function open(): JSONResponse {
-        // TODO.
-        // 1. Login이 안된경우 직접 로그인 페이지로 redirect 시켜야함.
-        // 2. 권한이 있는 사용자인지 여부를 확인
-        // 3. 에러 다이얼로그에 대한 리소스 관리 추가. ex) Not permitted to open the document.
+		if (!\OC_User::isLoggedIn()) {
+			return new JSONResponse(['error' => 'Not logged in'], 401);
+		}
 
 		try {
 			$locale = $this->l10n->getLanguageCode() ?? 'en';

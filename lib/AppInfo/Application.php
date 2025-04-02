@@ -20,14 +20,18 @@ class Application extends App implements IBootstrap {
 		parent::__construct(self::APP_ID, $urlParams);
 	}
 
+	public function register(IRegistrationContext $context): void {
+		// TODO. 추후에 AppConfig 클래스 주입하여 관리필요.
+	}
+
 	public function boot(IBootContext $context): void {
         $eventDispatcher = $context->getServerContainer()->get(IEventDispatcher::class);
 
         $eventDispatcher->addListener(LoadAdditionalScriptsEvent::class, function() {
-            Util::addScript(self::APP_ID, 'editor.bundle');
+            Util::addScript(self::APP_ID, 'editor');
         });
 		$eventDispatcher->addListener(LoadAdditionalScriptsEvent::class, function() {
-			Util::addScript(self::APP_ID, 'src/main');
+			Util::addScript(self::APP_ID, 'main');
 		});
 	}
 }

@@ -17,7 +17,8 @@ class SettingsController extends Controller {
         parent::__construct('thinkfree', $request);
     }
 
-
+	#[NoCSRFRequired]
+	#[NoAdminRequired]
     public function get(): DataResponse {
         $serverAddress = $this->config->getAppValue('thinkfree', 'serverAddress', '');
         $appKey = $this->config->getAppValue('thinkfree', 'appKey', '');

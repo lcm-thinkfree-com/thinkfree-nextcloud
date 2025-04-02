@@ -28,10 +28,8 @@ class DocumentController extends Controller {
 
     }
 
-    /**
-     * @NoAdminRequired
-     * @NoCSRFRequired
-     */
+	#[NoCSRFRequired]
+	#[NoAdminRequired]
     public function create(): JSONResponse {
 
         try {
