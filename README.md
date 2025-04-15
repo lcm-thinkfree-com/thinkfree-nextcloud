@@ -45,15 +45,15 @@ After that find Thinkfree in the list of available applications and install it.
 ## Configuring Thinkfree Office app for Nextcloud
 
 Navigate to Nextcloud administration settings at:\
-`User Menu > Administration Settings > Administration > Thinkfree WebOffice`
+`User Menu > Administration Settings > Administration > Thinkfree Office`
 
 Enter your Thinkfree Office Server address if you have installed your own Thinkfree Office server, otherwise use the default public test server:
 
 ```
-https://[thinkfree-weboffice-server-address]/ 
+https://[thinkfree-office-server-address]/ 
 ```
 
-Replace `[thinkfree-weboffice-server-address]` with your actual Thinkfree Office server address. Ensure that the server is accessible from both Nextcloud server and client browsers. The default value sets the connection to the public Thinkfree Office shared server.
+Replace `[thinkfree-office-server-address]` with your actual Thinkfree Office server address. Ensure that the server is accessible from both Nextcloud server and client browsers. The default value sets the connection to the public Thinkfree Office shared server.
 
 Set up **App Password** (i.e. security token):
 
