@@ -1,0 +1,78 @@
+{
+	"writer": {
+		"view": ["sxw", "stw", "ott", "dot", "dotx", "dotm", "wpd", "pdb", "hwp", "wps", "wri", "lrf", "mw", "fb2", "cwk", "pages", "abw", "602"],
+		"edit": ["odt", "fodt", "doc", "docx", "docm", "rtf", "txt"],
+		"mime": {
+			"sxw": "application/vnd.sun.xml.writer",
+			"stw": "application/vnd.sun.xml.writer.template",
+			"ott": "application/vnd.oasis.opendocument.text-template",
+			"dot": "application/msword",
+			"dotx": "application/vnd.openxmlformats-officedocument.wordprocessingml.template",
+			"dotm": "application/vnd.ms-word.template.macroEnabled.12",
+			"wpd": "application/wordperfect",
+			"pdb": "application/x-palm-database",
+			"hwp": "application/x-hwp",
+			"wps": "application/vnd.ms-works",
+			"wri": "application/x-mswrite",
+			"lrf": "application/x-sony-bbeb",
+			"mw": "application/macwriteii",
+			"fb2": "application/x-fictionbook+xml",
+			"cwk": "application/clarisworks",
+			"pages": "application/x-iwork-pages-sffpages",
+			"abw": "application/x-abiword",
+			"602": "application/x-t602",
+			"odt": "application/vnd.oasis.opendocument.text",
+			"fodt": "application/vnd.oasis.opendocument.text-flat",
+			"doc": "application/msword",
+			"docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+			"docm": "application/vnd.ms-word.document.macroEnabled.12",
+			"rtf": "application/rtf",
+			"txt": "text/plain"
+		}
+	},
+	"calc": {
+		"view": ["sxc", "stc", "ots", "xltx", "xltm", "wk1", "gnumeric", "numbers"],
+		"edit": ["ods", "fods", "xls", "xla", "xlsx", "xlsb", "xlsm", "dif", "slk", "csv", "dbf"],
+		"mime": {
+			"sxc": "application/vnd.sun.xml.calc",
+			"stc": "application/vnd.sun.xml.calc.template",
+			"ots": "application/vnd.oasis.opendocument.spreadsheet-template",
+			"xltx": "application/vnd.openxmlformats-officedocument.spreadsheetml.template",
+			"xltm": "application/vnd.ms-excel.template.macroEnabled.12",
+			"wk1": "application/x-123",
+			"gnumeric": "application/x-gnumeric",
+			"numbers": "application/x-iwork-numbers-sffnumbers",
+			"ods": "application/vnd.oasis.opendocument.spreadsheet",
+			"fods": "application/vnd.oasis.opendocument.spreadsheet-flat",
+			"xls": "application/vnd.ms-excel",
+			"xla": "application/vnd.ms-excel",
+			"xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+			"xlsb": "application/vnd.ms-excel.sheet.binary.macroEnabled.12",
+			"xlsm": "application/vnd.ms-excel.sheet.macroEnabled.12",
+			"dif": "application/x-dif",
+			"slk": "application/x-sylk",
+			"csv": "text/csv",
+			"dbf": "application/x-dbase"
+		}
+	},
+	"presentation": {
+		"view": ["sxi", "sti", "otp", "pot", "potx", "potm", "cgm", "key"],
+		"edit": ["odp", "fodp", "ppt", "pptx", "pptm", "ppsx"],
+		"mime": {
+			"sxi": "application/vnd.sun.xml.impress",
+			"sti": "application/vnd.sun.xml.impress.template",
+			"otp": "application/vnd.oasis.opendocument.presentation-template",
+			"pot": "application/vnd.ms-powerpoint",
+			"potx": "application/vnd.openxmlformats-officedocument.presentationml.template",
+			"potm": "application/vnd.ms-powerpoint.template.macroEnabled.12",
+			"cgm": "image/cgm",
+			"key": "application/x-iwork-keynote-sffkey",
+			"odp": "application/vnd.oasis.opendocument.presentation",
+			"fodp": "application/vnd.oasis.opendocument.presentation-flat",
+			"ppt": "application/vnd.ms-powerpoint",
+			"pptx": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+			"pptm": "application/vnd.ms-powerpoint.presentation.macroEnabled.12",
+			"ppsx": "application/vnd.openxmlformats-officedocument.presentationml.slideshow"
+		}
+	}
+}

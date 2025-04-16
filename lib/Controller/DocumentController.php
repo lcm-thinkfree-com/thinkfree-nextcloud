@@ -7,6 +7,8 @@ use OCP\AppFramework\Controller;
 use OCP\Files\IRootFolder;
 use OCP\IUserSession;
 use OCP\IL10N;
+use OCP\AppFramework\Http\Attribute\NoAdminRequired;
+use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
 
 class DocumentController extends Controller {
     private $userFolder;
