@@ -15,11 +15,6 @@ class ThinkfreeAdmin implements IIconSection {
         $this->urlGenerator = $urlGenerator;
     }
 
-
-    public function getIcon(): string {
-        return $this->urlGenerator->imagePath('thinkfree', 'app.svg', 'apps-extra');
-    }
-
     public function getID(): string {
         return 'thinkfree';
     }
@@ -28,7 +23,7 @@ class ThinkfreeAdmin implements IIconSection {
      * 관리자 메뉴에 표시될 이름(라벨)을 반환
      */
     public function getName(): string {
-        return $this->l->t('Thinkfree Office');
+        return $this->l->t('Thinkfree Admin');
     }
 
     /**
@@ -38,4 +33,8 @@ class ThinkfreeAdmin implements IIconSection {
     public function getPriority(): int {
         return 98;
     }
+
+	public function getIcon(): string {
+		return $this->urlGenerator->imagePath('thinkfree', 'app.svg');
+	}
 }

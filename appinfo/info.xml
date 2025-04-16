@@ -22,5 +22,7 @@
 	<settings>
         <admin>OCA\Thinkfree\Settings\ThinkfreeAdmin</admin>
         <admin-section>OCA\Thinkfree\Sections\ThinkfreeAdmin</admin-section>
+		<personal>OCA\Thinkfree\Settings\ThinkfreePersonal</personal>
+		<personal-section>OCA\Thinkfree\Sections\ThinkfreePersonal</personal-section>
     </settings>
 </info>
