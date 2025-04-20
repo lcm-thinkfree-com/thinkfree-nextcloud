@@ -33,5 +33,8 @@ class Application extends App implements IBootstrap {
 		$eventDispatcher->addListener(LoadAdditionalScriptsEvent::class, function() {
 			Util::addScript(self::APP_ID, 'main');
 		});
+		$eventDispatcher->addListener(LoadAdditionalScriptsEvent::class, function() {
+			Util::addScript(self::APP_ID, 'personal');
+		});
 	}
 }
