@@ -35,7 +35,13 @@ Download Installer:  [Download](https://download.thinkfree.com/ThinkfreeOffice/t
 
 Download Installation Guide: [Download](https://download.thinkfree.com/ThinkfreeOffice/(ThinkfreeOffice)_Installation-Guide_v2.5.1_20250124.pdf?Expires=2058739199&Signature=hwgELmnqZ88b3W5jS6aNxx~8CbBHAOIAdSWwkJog0rq1FAXCLl3I6p5Fht6HMi6JF-tdbXliLU7zf4~xvF58wbVzXpg~ZSInc2chtNiVJDUgYhtQZZnAhqftaFpZLtbw3J-E~jkM3hPxtKloLJmVp37iMje3uxvOy~lDHnn7zWKTTx0gpH35O0J1YGEINx-Fm8VR26jfNTR1rcwLJ3bVNDZUK7e8yQ1McM-L839rd9FCk~gV8N8Tr4jA1NJHNAqrhY8uI4sndx6AyPEZwCmMog0fX~X8JNc1v7kkMbJJ6MyHeYk53~DTexT57~TY2HltDX2a7G5MBiUrlkejVUhoPQ__&Key-Pair-Id=K271DD4C82VU9X)
 
-After successfully installing and deploying the Thinkfree server, please email [dev@thinkfree.com](mailto:dev@thinkfree.com) with a subject line as "Nextcloud Trial Request" to receive a complimentary trial license key. For technical support or advanced deployment options (e.g., clustering, autoscaling, failover), contact us at the same address.
+
+After successfully installing and deploying the Thinkfree server you will also need to register the server side adapter that allows your Thinkfree server to connect with Nextcloud:
+
+Download Nextcloud Adapter: [Download](https://download.thinkfree.com/ThinkfreeOffice/Adapter/nextcloud-develop.jar?Expires=2060553599&Signature=lVkBHTuwLYCuuZAj-N-DA0Nfq0urCdVKMuRCmYQrzsSZTZw3XOAkYHb2iZYraGz26YTjMl6QJXjn--cylV0jXOA~xhT81s8sIDJJwW~C18mqmDkQsZC1oRvARTUkkz9fyDrtY7ERIHhQrsQsXrzIRXFlUtC3gvnP5BTQtz27fjWPOR035HtyO~8CELi5szBKNvY9iTrfTdcdNmCTPDk2Nr-iS5F-RqqpHsYhuPp7KfQVjFOFtMoGRpn7EKX29Vl6LL4l7YO-sJ2QG-f3BzePyqPql8cfTEj-t8B8XDZuElCUdqOhP4DbzByIHUvOHAdUj9nd8D08kyDetjoK0MuG9Q__&Key-Pair-Id=K271DD4C82VU9X)
+
+
+Finally, email dev@thinkfree.com with a subject line as "Nextcloud Trial Request" to receive a complimentary trial license key. For technical support or advanced deployment options (e.g., clustering, autoscaling, failover), contact us at the same address.
 
 ## Installing Thinkfree Office app for Nextcloud
 The Nextcloud administrator go to the built-in Nextcloud application market to install the Thinkfree Office connector app. First go to the user name and then select Apps.
@@ -45,7 +51,14 @@ After that find Thinkfree in the list of available applications and install it.
 ## Configuring Thinkfree Office app for Nextcloud
 
 Navigate to Nextcloud administration settings at:\
-`User Menu > Administration Settings > Administration > Thinkfree Office`
+
+For **personal users**, go to:  
+`User Menu > Personal Settings > Personal > Thinkfree Office`  
+
+For **administrators**, go to:  
+`User Menu > Administration Settings > Administration > Thinkfree Admin`
+
+*Both menus currently offer the same functionality, but the admin section is scheduled to be updated as a dedicated admin-only area in an upcoming release.*
 
 Enter your Thinkfree Office Server address if you have installed your own Thinkfree Office server, otherwise use the default public test server:
 

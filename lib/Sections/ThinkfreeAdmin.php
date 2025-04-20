@@ -35,6 +35,6 @@ class ThinkfreeAdmin implements IIconSection {
     }
 
 	public function getIcon(): string {
-		return $this->urlGenerator->imagePath('thinkfree', 'app.svg');
+		return $this->urlGenerator->imagePath('thinkfree', 'app-dark.svg');
 	}
 }

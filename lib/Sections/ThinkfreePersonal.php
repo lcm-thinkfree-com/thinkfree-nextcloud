@@ -41,6 +41,6 @@ class ThinkfreePersonal implements IIconSection {
 	 * @return string|null
 	 */
 	public function getIcon() {
-		return $this->urlGenerator->imagePath('thinkfree', 'app.svg');
+		return $this->urlGenerator->imagePath('thinkfree', 'app-dark.svg');
 	}
 }

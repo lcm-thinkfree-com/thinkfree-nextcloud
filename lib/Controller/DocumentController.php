@@ -66,7 +66,22 @@ class DocumentController extends Controller {
             $content = $this->loadTemplateContent($fileInfo['templatePath']);
             $file->putContent($content);
 
-            return new JSONResponse(['filename' => $file->getPath()]);
+			$userFolderPath = $this->userFolder->getPath();
+			$relativePath = ltrim(str_replace($userFolderPath, '', $file->getPath()), '/');
+			$directory = dirname($relativePath);
+
+			return new JSONResponse([
+				'basename' => $filename,
+				'fileid' => $file->getId(),
+				'mime' => $file->getMimeType(),
+				'type' => 'file',
+				'path' => $directory,
+				'source' => $relativePath,
+				'mtime' => $file->getMTime(),
+				'size' => $file->getSize()
+			]);
+
+			return new JSONResponse($responseData);
         } catch (\Exception $e) {
             // TODO. 파일 생성 성공이후 내부적으로 에러발생하는 원인분석 필요.
             return new JSONResponse(['error' => '파일 생성 실패: ' . $e->getMessage()], 500);
@@ -114,13 +129,13 @@ class DocumentController extends Controller {
         return file_get_contents($templatePath);
     }
 
-    private function generateUniqueFilename(string $baseName, string $extension): string {
-        $filename = $baseName . $extension;
-        $counter = 1;
-        while ($this->userFolder->nodeExists($filename)) {
-            $filename = $baseName . ' (' . $counter . ')' . $extension;
-            $counter++;
-        }
-        return $filename;
-    }
+	private function generateUniqueFilename(string $baseName, string $extension, \OCP\Files\Folder $targetFolder): string {
+		$filename = $baseName . $extension;
+		$counter = 1;
+		while ($targetFolder->nodeExists($filename)) {
+			$filename = $baseName . ' (' . $counter . ')' . $extension;
+			$counter++;
+		}
+		return $filename;
+	}
 }
