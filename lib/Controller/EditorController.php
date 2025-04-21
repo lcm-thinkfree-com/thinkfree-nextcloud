@@ -42,7 +42,9 @@ class EditorController extends Controller {
 			$locale = $this->l10n->getLanguageCode() ?? 'en';
 			$adapterName = 'nc';
 
-			$serverAddress = rtrim($this->config->getUserValue($userId, 'thinkfree', 'serverAddress', 'https://nextcloud.thinkfree.com/'), '/') . '/';
+			$serverAddressRaw = $this->config->getUserValue($userId, 'thinkfree', 'serverAddress', 'https://nextcloud.thinkfree.com/');
+			$serverAddress = empty($serverAddressRaw) ? 'https://nextcloud.thinkfree.com/' : $serverAddressRaw;
+			$serverAddress = rtrim($serverAddress, '/') . '/';
 			// TODO. JWT 또는 암복호화 코드 필요.
 			$appKey = $this->getAppKey($userId);
 
