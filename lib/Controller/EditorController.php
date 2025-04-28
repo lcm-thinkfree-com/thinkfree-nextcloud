@@ -57,7 +57,6 @@ class EditorController extends Controller {
 		} catch (\Exception $e) {
 			return new JSONResponse(['error' => '파일 열기 실패: ' . $e->getMessage()], 500);
 		}
-
     }
 
 	private function getAppKey(string $userId): string {
