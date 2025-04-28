@@ -83,8 +83,7 @@ class DocumentController extends Controller {
 
 			return new JSONResponse($responseData);
         } catch (\Exception $e) {
-            // TODO. 파일 생성 성공이후 내부적으로 에러발생하는 원인분석 필요.
-            return new JSONResponse(['error' => '파일 생성 실패: ' . $e->getMessage()], 500);
+            return new JSONResponse(['error' => '파일 생성 실패'], 500);
         }
     }
 
