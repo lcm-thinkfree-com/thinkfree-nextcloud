@@ -9,16 +9,25 @@ use OCP\IConfig;
 use OCP\IUserSession;
 use OCP\AppFramework\Http\Attribute\NoAdminRequired;
 use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
+use OCP\IGroupManager;
+use OCP\IAppConfig;
+use OC\Security\Crypto;
 
 class SettingsController extends Controller {
-    private IConfig $config;
+	private IConfig $config;
+	private IAppConfig $appConfig;
 	private IUserSession $userSession;
+	private IGroupManager $groupManager;
+	private Crypto $crypto;
 
-    public function __construct(IRequest $request, IConfig $config, IUserSession $userSession) {
-        $this->config = $config;
+    public function __construct(IRequest $request, IConfig $config, IAppConfig $appConfig, IUserSession $userSession, IGroupManager $groupManager, Crypto $crypto) {
+		parent::__construct('thinkfree', $request);
+		$this->config = $config;
+		$this->appConfig = $appConfig;
 		$this->userSession = $userSession;
-        parent::__construct('thinkfree', $request);
-    }
+		$this->groupManager = $groupManager;
+		$this->crypto = $crypto;
+	}
 
 	#[NoCSRFRequired]
 	#[NoAdminRequired]
@@ -29,12 +38,22 @@ class SettingsController extends Controller {
 		}
 		$userId = $user->getUID();
 
-        $serverAddress = $this->config->getUserValue($userId, 'thinkfree', 'serverAddress', '');
-        $appKey = $this->config->getUserValue($userId, 'thinkfree', 'appKey', '');
-        return new DataResponse([
-            'serverAddress' => $serverAddress,
-            'appKey' => $appKey,
-        ]);
+		$serverAddress = $this->config->getUserValue($userId, 'thinkfree', 'serverAddress', '');
+
+		$response = [
+			'serverAddress' => $serverAddress
+		];
+
+		if ($this->groupManager->isAdmin($userId)) {
+        	$appKey = $this->appConfig->getValue('thinkfree', 'appKey');
+			if (!empty($appKey)) {
+				$response['appKey'] = str_repeat('*', 20);
+			} else {
+				$response['appKey'] = '';
+			}
+		}
+
+        return new DataResponse($response);
     }
 
     #[NoCSRFRequired]
@@ -52,7 +71,8 @@ class SettingsController extends Controller {
             $this->config->setUserValue($userId, 'thinkfree', 'serverAddress', $data['serverAddress']);
         }
         if (isset($data['appKey'])) {
-            $this->config->setUserValue($userId, 'thinkfree', 'appKey', $data['appKey']);
+			$encryptedData = $this->crypto->encrypt($data['appKey']);
+            $this->appConfig->setValue('thinkfree', 'appKey', $encryptedData);
         }
 
         return new DataResponse(['status' => 'success']);
