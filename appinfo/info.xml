@@ -17,7 +17,7 @@
     <screenshot>https://raw.githubusercontent.com/lcm-thinkfree-com/thinkfree-nextcloud/main/screenshots/open.png</screenshot>
 	<bugs>https://github.com/lcm-thinkfree-com/thinkfree-nextcloud/issues</bugs>
 	<dependencies>
-		<nextcloud min-version="31" max-version="31"/>
+		<nextcloud min-version="31" max-version="32"/>
 	</dependencies>
 	<settings>
         <admin>OCA\Thinkfree\Settings\ThinkfreeAdmin</admin>

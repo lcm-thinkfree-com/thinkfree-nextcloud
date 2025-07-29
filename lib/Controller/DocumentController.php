@@ -27,7 +27,6 @@ class DocumentController extends Controller {
         $this->userId = $userSession->getUser()->getUID();
         $this->userFolder = $rootFolder->getUserFolder($this->userId);
         $this->l10n = $l10n;
-
     }
 
 	#[NoCSRFRequired]

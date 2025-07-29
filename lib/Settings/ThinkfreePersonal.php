@@ -16,8 +16,7 @@ class ThinkfreePersonal implements ISettings {
 		$this->l10n = $l10n;
 	}
 
-	public function getForm()
-	{
+	public function getForm() {
 		$parameters = [];
 
 		$response = new TemplateResponse('thinkfree', 'personal', $parameters, '');
