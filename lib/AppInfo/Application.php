@@ -28,7 +28,7 @@ class Application extends App implements IBootstrap {
         $eventDispatcher = $context->getServerContainer()->get(IEventDispatcher::class);
 
         $eventDispatcher->addListener(LoadAdditionalScriptsEvent::class, function() {
-            Util::addScript(self::APP_ID, 'editor');
+            Util::addInitScript(self::APP_ID, 'editor');
         });
 		$eventDispatcher->addListener(LoadAdditionalScriptsEvent::class, function() {
 			Util::addScript(self::APP_ID, 'main');
