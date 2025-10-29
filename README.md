@@ -1,59 +1,113 @@
 # Thinkfree Office for Nextcloud
 
-This Thinkfree Office connector app enables users to view and edit office documents from [Nextcloud](https://nextcloud.com).
+The **Thinkfree Office for Nextcloud** app enables users to open, view, and edit office documents directly from [Nextcloud](https://nextcloud.com) using **Thinkfree Office**.
+
+---
+
+## Overview
+
+This integration allows seamless editing and collaboration on documents, spreadsheets, and presentations within Nextcloud through Thinkfree Office.  
+All files remain securely stored in your Nextcloud environment.
+
+---
 
 ## Features
 
-The Thinkfree Office app allows you to:
+- Create, view, and edit documents, spreadsheets, and presentations
+- Real-time co-editing with comments and change tracking
+- Full compatibility with Microsoft Office and OpenDocument formats
 
-- Create and edit documents, spreadsheets, and presentations (in MS and ODF file formats).
-- Co-edit documents in real-time with built-in collaborative features such as comments and change tracking.
+**Supported file formats**
 
-Supported file formats:
-- doc, docx, rtf, xls, xlsx, ppt, pptx, txt(view), csv(view)
-- odt, ods, odp (coming soon...)
+| Type | Formats |
+|------|----------|
+| Editable | `.doc`, `.docx`, `.rtf`, `.xls`, `.xlsx`, `.ppt`, `.pptx` |
+| View only | `.txt`, `.csv` |
+| Coming soon | `.odt`, `.ods`, `.odp` |
 
+---
 
-## Integrating Thinkfree Office Server
-You can install and deploy an instance of Thinkfree Office on your own server or private cloud instance as long as it is resolvable and connectable both from Nextcloud and from client browsers.
+## Prerequisites
 
-Visit [here](https://thinkfree.com/contact-free-license/) to request a free trial package and license.
+Before setting up the integration, you need access to a **Thinkfree Office Server** that is reachable from both:
+- The **Nextcloud server**, and
+- **User browsers** (clients)
 
-After successfully installing and deploying the Thinkfree server you will also need to register the server side adapter that allows your Thinkfree server to connect with Nextcloud:
+You can:
+- [Request a free trial package and license](https://thinkfree.com/thinkfree-office/pricing/free-license/), or
+- Deploy Thinkfree Office on your own server or private cloud.
 
-Download Nextcloud Adapter: [Download](https://drive.google.com/file/d/1oxMdNdl_c9ByRYg23almpcoMRYegSnt5/view?usp=sharing)
+After deploying your Thinkfree Office server, install the **Nextcloud Adapter** to enable communication between Thinkfree Office and Nextcloud.
 
+**Download Nextcloud Adapter:**  
+[Download](https://drive.google.com/file/d/1hY9l6jZE6rkFyriwRp7h0pU-1yWUxGW_/view?usp=sharing)
 
-## Installing Thinkfree Office app for Nextcloud
-The Nextcloud administrator should go to the built-in Nextcloud application market to install the Thinkfree Office connector app. First go to the user name and then select Apps.
+---
 
-After that find Thinkfree in the list of available applications and install it.
+## Installation
 
-## Configuring Thinkfree Office app for Nextcloud
+### 1. Install the Thinkfree Office App in Nextcloud
+1. Log in to Nextcloud as an **administrator**.
+2. Go to **Profile Menu → Apps**.
+3. Find **Thinkfree Office** in the list of available applications.
+4. Click **Install**.
 
-Navigate to Nextcloud administration settings at:\
-`~/settings/admin/thinkfree`
+---
 
-Enter your Thinkfree Office Server address if you have installed your own Thinkfree Office server, otherwise use the default public test server:
+## Configuration
+
+Once installed, open the Thinkfree Office configuration page in Nextcloud:
 
 ```
-https://[thinkfree-weboffice-server-address]/ 
+Settings → Administration → Thinkfree
 ```
 
-Replace `[thinkfree-weboffice-server-address]` with your actual Thinkfree Office server address. Ensure that the server is accessible from both Nextcloud server and client browsers. The default value sets the connection to the public Thinkfree Office shared server.
+### Configure the Thinkfree Office Server Address
 
-On the administrator settings page you will need to configure your JWT secret value. The JWT token value is internally converted and used for encryption/decryption, signing, authentication, etc. during request/response.
+Enter the URL of your Thinkfree Office server:
+```
+https://[your-thinkfree-server-address]/
+```
 
-The **Open in Thinkfree Office** action is added to the file context menu automatically.
+> Replace `[your-thinkfree-server-address]` with your actual Thinkfree Office server address.  
+> The server must be accessible from both the Nextcloud instance and end-user browsers.
 
+If you do not have your own Thinkfree Office deployment, you can use the **default public test server**.
 
-## How it works
+### Configure the JWT Secret
 
-When a user selects a file in Nextcloud and clicks **Open in Thinkfree Office**, a new browser tab opens and connects to Thinkfree Office server address set in the administrative panel:
+Set the **JWT Secret** value, which is used to securely authenticate and encrypt communication between Nextcloud and Thinkfree Office.
 
-- Thinkfree Office downloads the document, and starts the editing session.
-- Changes are synced back securely to Nextcloud once the editing session is finished.
+Once saved, the **“Open in Thinkfree Office”** action will automatically appear in the Nextcloud file context menu for supported file types.
 
-For further details, the full guide is [here](https://cs.thinkfree.com/en/support/solutions/articles/158000282045-how-to-set-up-thinkfree-office-for-nextcloud).
-Also please visit [Thinkfree Office](https://www.thinkfree.com) for product details.
+---
 
+## Usage
+
+1. In Nextcloud Files, right-click on a document and select **Open in Thinkfree Office**.
+2. A new browser tab opens and loads the file using your configured Thinkfree Office server.
+3. Edit collaboratively in real time.
+4. When finished, all changes are saved securely back to Nextcloud.
+
+---
+
+## How It Works
+
+1. When a document is opened, Nextcloud sends a secure request (signed with the JWT secret) to the Thinkfree Office server.
+2. The document is downloaded from Nextcloud and opened for editing in Thinkfree Office.
+3. Upon completion, Thinkfree Office synchronizes all changes back to Nextcloud.
+4. No data is stored outside your environment (if self-hosted).
+
+---
+
+## Additional Resources
+
+- Full setup guide:  
+  [How to set up Thinkfree Office for Nextcloud](https://cs.thinkfree.com/en/support/solutions/articles/158000282045-how-to-set-up-thinkfree-office-for-nextcloud)
+
+- Product information:  
+  [Thinkfree Office Website](https://www.thinkfree.com)
+
+---
+
+Thinkfree Inc. All rights reserved.
