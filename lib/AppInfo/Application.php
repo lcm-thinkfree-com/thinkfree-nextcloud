@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace OCA\Thinkfree\AppInfo;
 
+use OCA\Files\Event\LoadAdditionalScriptsEvent;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
-use OCP\Util;
 use OCP\EventDispatcher\IEventDispatcher;
-use OCA\Files\Event\LoadAdditionalScriptsEvent;
-use OCP\AppFramework\Http\ContentSecurityPolicy;
+use OCP\Util;
 
 class Application extends App implements IBootstrap {
 	public const APP_ID = 'thinkfree';
@@ -25,15 +24,15 @@ class Application extends App implements IBootstrap {
 	}
 
 	public function boot(IBootContext $context): void {
-        $eventDispatcher = $context->getServerContainer()->get(IEventDispatcher::class);
+		$eventDispatcher = $context->getServerContainer()->get(IEventDispatcher::class);
 
-        $eventDispatcher->addListener(LoadAdditionalScriptsEvent::class, function() {
-            Util::addScript(self::APP_ID, 'editor');
-        });
-		$eventDispatcher->addListener(LoadAdditionalScriptsEvent::class, function() {
+		$eventDispatcher->addListener(LoadAdditionalScriptsEvent::class, function () {
+			Util::addScript(self::APP_ID, 'editor');
+		});
+		$eventDispatcher->addListener(LoadAdditionalScriptsEvent::class, function () {
 			Util::addScript(self::APP_ID, 'main');
 		});
-		$eventDispatcher->addListener(LoadAdditionalScriptsEvent::class, function() {
+		$eventDispatcher->addListener(LoadAdditionalScriptsEvent::class, function () {
 			Util::addScript(self::APP_ID, 'personal');
 		});
 	}

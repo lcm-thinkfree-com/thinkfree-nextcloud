@@ -4,7 +4,6 @@ namespace OCA\Thinkfree\Settings;
 
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IL10N;
-use OCP\Settings\IIconSection;
 use OCP\Settings\ISettings;
 
 class ThinkfreePersonal implements ISettings {

@@ -1,42 +1,42 @@
 <?php
+
 declare(strict_types=1);
 
 namespace OCA\Thinkfree\Controller;
 
+use OC\Security\Crypto;
+use OCA\Thinkfree\Crypt;
 use OCP\AppFramework\Controller;
-use OCP\IRequest;
-use OCP\IConfig;
-use OCP\IUserSession;
-use OCP\IL10N;
-use OCP\AppFramework\Http\JSONResponse;
 use OCP\AppFramework\Http\Attribute\NoAdminRequired;
 use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
-use OCA\Thinkfree\Crypt;
+use OCP\AppFramework\Http\JSONResponse;
 use OCP\IAppConfig;
-use OC\Security\Crypto;
-
+use OCP\IConfig;
+use OCP\IL10N;
+use OCP\IRequest;
+use OCP\IUserSession;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 class EditorController extends Controller {
-    private IConfig $config;
+	private IConfig $config;
 	private IAppConfig $appConfig;
 	private Crypto $crypto;
 	private IUserSession $userSession;
-    private $l10n;
+	private $l10n;
 
-    public function __construct($appName, IRequest $request,  IConfig $config, IL10N $l10n, IUserSession $userSession, IAppConfig $appConfig, Crypto $crypto) {
-        parent::__construct($appName, $request);
-        $this->config = $config;
+	public function __construct($appName, IRequest $request, IConfig $config, IL10N $l10n, IUserSession $userSession, IAppConfig $appConfig, Crypto $crypto) {
+		parent::__construct($appName, $request);
+		$this->config = $config;
 		$this->appConfig = $appConfig;
 		$this->crypto = $crypto;
 		$this->userSession = $userSession;
-        $this->l10n = $l10n;
-    }
+		$this->l10n = $l10n;
+	}
 
 	#[NoCSRFRequired]
 	#[NoAdminRequired]
-    public function open(): JSONResponse {
+	public function open(): JSONResponse {
 		if (!\OC_User::isLoggedIn()) {
 			return new JSONResponse(['error' => 'Not logged in'], 401);
 		}
@@ -80,5 +80,5 @@ class EditorController extends Controller {
 		} catch (\Exception $e) {
 			return new JSONResponse(['error' => '파일 열기 실패: ' . $e->getMessage()], 500);
 		}
-    }
+	}
 }
