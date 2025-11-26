@@ -5,8 +5,7 @@
 	"authors": [
 		{
 			"name": "Thinkfree",
-			"email": "lcm@thinkfree.com",
-			"homepage": ""
+			"email": "lcm@thinkfree.com"
 		}
 	],
 	"autoload": {
@@ -15,25 +14,25 @@
 		}
 	},
 	"scripts": {
-		"post-install-cmd": [
-			"@composer bin all install --ansi"
-		],
-		"post-update-cmd": [
-			"@composer bin all uCpdate --ansi"
-		],
-		"lint": "find . -name \\*.php -not -path './vendor/*' -not -path './vendor-bin/*' -not -path './build/*' -print0 | xargs -0 -n1 php -l",
+		"lint": "find . -name \\*.php -not -path './vendor/*' -not -path './build/*' -print0 | xargs -0 -n1 php -l",
 		"cs:check": "php-cs-fixer fix --dry-run --diff",
 		"cs:fix": "php-cs-fixer fix",
-		"psalm": "psalm --threads=1 --no-cache",
-		"test:unit": "phpunit tests -c tests/phpunit.xml --colors=always --fail-on-warning --fail-on-risky",
+		"psalm": "vendor-bin/psalm/vendor/vimeo/psalm/psalm --threads=1",
+		"psalm:update-baseline": "vendor-bin/psalm/vendor/vimeo/psalm/psalm --threads=1 --update-baseline --set-baseline=tests/psalm-baseline.xml",
+		"test:unit": "phpunit -c tests/phpunit.xml --color --fail-on-warning --fail-on-risky",
+		"post-install-cmd": [
+			"[ $COMPOSER_DEV_MODE -eq 0 ] || composer bin all install --ansi"
+		],
+		"post-update-cmd": [
+			"[ $COMPOSER_DEV_MODE -eq 0 ] || composer bin all update --ansi"
+		],
 		"openapi": "generate-spec"
 	},
 	"require": {
-		"bamarni/composer-bin-plugin": "^1.8",
-		"php": "^8.1"
+		"bamarni/composer-bin-plugin": "^1.8"
 	},
 	"require-dev": {
-		"nextcloud/ocp": "dev-stable29",
+		"nextcloud/ocp": "dev-master",
 		"roave/security-advisories": "dev-latest"
 	},
 	"config": {
@@ -43,7 +42,13 @@
 		"optimize-autoloader": true,
 		"sort-packages": true,
 		"platform": {
-			"php": "8.1"
+			"php": "8.2"
+		}
+	},
+	"extra": {
+		"bamarni-bin": {
+			"bin-links": true,
+			"forward-command": false
 		}
 	}
 }
