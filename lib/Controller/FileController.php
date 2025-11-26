@@ -1,19 +1,20 @@
 <?php
+
 namespace OCA\Thinkfree\Controller;
 
+use OC\Security\Crypto;
 use OCA\Thinkfree\Crypt;
 use OCP\AppFramework\Controller;
-use OCP\IConfig;
-use OCP\IRequest;
 use OCP\AppFramework\Http\Attribute\NoAdminRequired;
 use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
 use OCP\AppFramework\Http\Attribute\PublicPage;
-use OCP\AppFramework\Http\DataResponse;
-use OCP\Files\IRootFolder;
-use OCP\AppFramework\Http\Response;
 use OCP\AppFramework\Http\DataDownloadResponse;
+use OCP\AppFramework\Http\DataResponse;
+use OCP\AppFramework\Http\Response;
+use OCP\Files\IRootFolder;
 use OCP\IAppConfig;
-use OC\Security\Crypto;
+use OCP\IConfig;
+use OCP\IRequest;
 
 class FileController extends Controller {
 	private IConfig $config;
@@ -92,7 +93,7 @@ class FileController extends Controller {
 			$file = $files[0];
 
 			if (empty($files)) {
-				throw new \Exception("File not found");
+				throw new \Exception('File not found');
 			}
 
 			$filename = $file->getName();
@@ -102,7 +103,7 @@ class FileController extends Controller {
 			$response->addHeader('Content-Length', $file->getSize());
 
 			return $response;
-		} catch (\Throwable $e){
+		} catch (\Throwable $e) {
 			return new DataResponse([
 				'success' => false,
 				'message' => $e->getMessage()

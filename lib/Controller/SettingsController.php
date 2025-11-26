@@ -2,16 +2,16 @@
 
 namespace OCA\Thinkfree\Controller;
 
-use OCP\AppFramework\Http\DataResponse;
+use OC\Security\Crypto;
 use OCP\AppFramework\Controller;
-use OCP\IRequest;
-use OCP\IConfig;
-use OCP\IUserSession;
 use OCP\AppFramework\Http\Attribute\NoAdminRequired;
 use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
-use OCP\IGroupManager;
+use OCP\AppFramework\Http\DataResponse;
 use OCP\IAppConfig;
-use OC\Security\Crypto;
+use OCP\IConfig;
+use OCP\IGroupManager;
+use OCP\IRequest;
+use OCP\IUserSession;
 
 class SettingsController extends Controller {
 	private IConfig $config;
@@ -20,7 +20,7 @@ class SettingsController extends Controller {
 	private IGroupManager $groupManager;
 	private Crypto $crypto;
 
-    public function __construct(IRequest $request, IConfig $config, IAppConfig $appConfig, IUserSession $userSession, IGroupManager $groupManager, Crypto $crypto) {
+	public function __construct(IRequest $request, IConfig $config, IAppConfig $appConfig, IUserSession $userSession, IGroupManager $groupManager, Crypto $crypto) {
 		parent::__construct('thinkfree', $request);
 		$this->config = $config;
 		$this->appConfig = $appConfig;
@@ -31,7 +31,7 @@ class SettingsController extends Controller {
 
 	#[NoCSRFRequired]
 	#[NoAdminRequired]
-    public function get(): DataResponse {
+	public function get(): DataResponse {
 		$user = $this->userSession->getUser();
 		if (!$user) {
 			return new DataResponse(['error' => 'Unauthorized'], Http::STATUS_UNAUTHORIZED);
@@ -45,7 +45,7 @@ class SettingsController extends Controller {
 		];
 
 		if ($this->groupManager->isAdmin($userId)) {
-        	$appKey = $this->appConfig->getValue('thinkfree', 'appKey');
+			$appKey = $this->appConfig->getValue('thinkfree', 'appKey');
 			if (!empty($appKey)) {
 				$response['appKey'] = str_repeat('*', 20);
 			} else {
@@ -53,28 +53,28 @@ class SettingsController extends Controller {
 			}
 		}
 
-        return new DataResponse($response);
-    }
+		return new DataResponse($response);
+	}
 
-    #[NoCSRFRequired]
-    #[NoAdminRequired]
-    public function set(): DataResponse {
+	#[NoCSRFRequired]
+	#[NoAdminRequired]
+	public function set(): DataResponse {
 		$user = $this->userSession->getUser();
 		if (!$user) {
 			return new DataResponse(['error' => 'Unauthorized'], 401);
 		}
 		$userId = $user->getUID();
 
-        $data = json_decode(file_get_contents('php://input'), true);
+		$data = json_decode(file_get_contents('php://input'), true);
 
-        if (isset($data['serverAddress'])) {
-            $this->config->setUserValue($userId, 'thinkfree', 'serverAddress', $data['serverAddress']);
-        }
-        if (isset($data['appKey'])) {
+		if (isset($data['serverAddress'])) {
+			$this->config->setUserValue($userId, 'thinkfree', 'serverAddress', $data['serverAddress']);
+		}
+		if (isset($data['appKey'])) {
 			$encryptedData = $this->crypto->encrypt($data['appKey']);
-            $this->appConfig->setValue('thinkfree', 'appKey', $encryptedData);
-        }
+			$this->appConfig->setValue('thinkfree', 'appKey', $encryptedData);
+		}
 
-        return new DataResponse(['status' => 'success']);
-    }
+		return new DataResponse(['status' => 'success']);
+	}
 }

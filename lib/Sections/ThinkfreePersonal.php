@@ -3,8 +3,8 @@
 namespace OCA\Thinkfree\Sections;
 
 use OCP\IL10N;
-use OCP\Settings\IIconSection;
 use OCP\IURLGenerator;
+use OCP\Settings\IIconSection;
 
 class ThinkfreePersonal implements IIconSection {
 	/** @var IL10N */

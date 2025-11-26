@@ -19,14 +19,14 @@ class Crypt {
 		return JWT::encode($payload, $this->secret, 'HS256');
 	}
 
-	function getJwtClaim(string $token, string $claimKey): ?string {
+	public function getJwtClaim(string $token, string $claimKey): ?string {
 		try {
 			$decoded = JWT::decode($token, new Key($this->secret, 'HS256'));
 			$decodedArray = (array)$decoded;
 			return $decodedArray[$claimKey] ?? null;
 		} catch (Exception $e) {
 			// 로그 찍거나 예외 처리
-			error_log("JWT decode error: " . $e->getMessage());
+			error_log('JWT decode error: ' . $e->getMessage());
 			return null;
 		}
 	}
