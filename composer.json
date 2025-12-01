@@ -5,8 +5,7 @@
 	"authors": [
 		{
 			"name": "Thinkfree",
-			"email": "lcm@thinkfree.com",
-			"homepage": ""
+			"email": "lcm@thinkfree.com"
 		}
 	],
 	"autoload": {
@@ -19,7 +18,7 @@
 			"@composer bin all install --ansi"
 		],
 		"post-update-cmd": [
-			"@composer bin all uCpdate --ansi"
+			"@composer bin all update --ansi"
 		],
 		"lint": "find . -name \\*.php -not -path './vendor/*' -not -path './vendor-bin/*' -not -path './build/*' -print0 | xargs -0 -n1 php -l",
 		"cs:check": "php-cs-fixer fix --dry-run --diff",
